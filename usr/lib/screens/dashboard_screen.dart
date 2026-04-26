@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
 import '../models/instrument.dart';
-import 'package:intl/intl.dart';
+import '../utils/date_formatter.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class DashboardScreen extends StatelessWidget {
       ..sort((a, b) => a.nextCalibrationDate.compareTo(b.nextCalibrationDate));
 
     for (var instrument in sortedInstruments) {
-      final monthYear = DateFormat('MMMM yyyy').format(instrument.nextCalibrationDate);
+      final monthYear = DateFormatter.formatMonthYear(instrument.nextCalibrationDate);
       if (!groupedInstruments.containsKey(monthYear)) {
         groupedInstruments[monthYear] = [];
       }
@@ -53,7 +53,7 @@ class DashboardScreen extends StatelessWidget {
                         title: Text(instrument.name),
                         subtitle: Text('ID: ${instrument.id}'),
                         trailing: Text(
-                          DateFormat('dd MMM').format(instrument.nextCalibrationDate),
+                          DateFormatter.formatDayMonth(instrument.nextCalibrationDate),
                           style: const TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,

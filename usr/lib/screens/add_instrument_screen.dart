@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/instrument.dart';
 import '../main.dart';
-import 'package:intl/intl.dart';
+import '../utils/date_formatter.dart';
 
 class AddInstrumentScreen extends StatefulWidget {
   const AddInstrumentScreen({Key? key}) : super(key: key);
@@ -86,7 +86,7 @@ class _AddInstrumentScreenState extends State<AddInstrumentScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Last Calibrated: ${DateFormat('dd MMM yyyy').format(_lastCalibrationDate)}'),
+                  Text('Last Calibrated: ${DateFormatter.formatDayMonthYear(_lastCalibrationDate)}'),
                   TextButton(
                     onPressed: () => _selectDate(context),
                     child: const Text('Select Date'),

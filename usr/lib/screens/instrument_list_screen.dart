@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
-import 'package:intl/intl.dart';
+import '../utils/date_formatter.dart';
 import 'add_instrument_screen.dart';
 
 class InstrumentListScreen extends StatelessWidget {
@@ -35,7 +35,7 @@ class InstrumentListScreen extends StatelessWidget {
                     children: [
                       const Text('Next Due', style: TextStyle(fontSize: 12)),
                       Text(
-                        DateFormat('dd MMM yyyy').format(instrument.nextCalibrationDate),
+                        DateFormatter.formatDayMonthYear(instrument.nextCalibrationDate),
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
